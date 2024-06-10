@@ -68,6 +68,8 @@ public class DepartmentController {
 
             addLinks(dto);
 
+
+
             return Response.ok(dto).build();
         }
         catch (ClassNotFoundException e) {
