@@ -16,7 +16,8 @@ public class Employee {
     private int jobId;
     private double salary;
     private int departmentId;
-
+    private int manager_id;
+    private String phone_number;
     public Employee() {
         // TODO Auto-generated constructor stub
     }
@@ -127,6 +128,22 @@ public class Employee {
         this.departmentId = departmentId;
     }
 
+    public int getManager_id() {
+        return manager_id;
+    }
+
+    public void setManager_id(int manager_id) {
+        this.manager_id = manager_id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -138,6 +155,8 @@ public class Employee {
                 ", jobId=" + jobId +
                 ", salary=" + salary +
                 ", departmentId=" + departmentId +
+                ", manager_id=" + manager_id +
+                ", phone_number='" + phone_number + '\'' +
                 '}';
     }
 }

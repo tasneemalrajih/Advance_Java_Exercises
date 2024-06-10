@@ -15,8 +15,8 @@ public class SessionService implements Serializable {
 
     private int count;
 
-//    @Inject
-//    DepartmentDAO dao;
+//   @Inject
+//   DepartmentDAO dao;
 
     public int getCount() {
         return ++count;
