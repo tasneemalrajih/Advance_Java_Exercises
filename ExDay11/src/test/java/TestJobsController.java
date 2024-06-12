@@ -43,24 +43,24 @@ public class TestJobsController {
     public void testGetJobs() throws SQLException, ClassNotFoundException {
         jobs j = new jobs(1,"Public Accountant1",4200,9000);
        JobsDto jDto=new JobsDto();
-        DepartmentDto dDto = new DepartmentDto(1, "Test Dept", 1500);
-        URI uri = URI.create("http://localhost/api/department/1");
 
-       // when(dao.selectjob(1)).thenReturn(d);
-        //when(mapper.toDeptDto(d)).thenReturn(dDto);
+        URI uri = URI.create("http://localhost/webapi/Jobs/1");
+
+        when(dao.selectjob(1)).thenReturn(j);
+        when(mapper.toJobsDto(j)).thenReturn(jDto);
         when(uriInfo.getAbsolutePath()).thenReturn(uri);
         when(uriInfo.getAbsolutePathBuilder()).thenReturn(UriBuilder.fromUri(uri));
 
         Assertions.assertDoesNotThrow(() -> JobsCont.getjob(1));
 
-        dDto.getLinks().clear();
+        jDto.getLinks().clear();
         Response res = JobsCont.getjob(1);
 
-        //verify(mapper, times(2)).toDeptDto(d);
+        verify(mapper, times(2)).toJobsDto(j);
 
         Assertions.assertEquals(200, res.getStatus());
-        Assertions.assertNotNull(((DepartmentDto) res.getEntity()).getLinks());
-        Assertions.assertEquals(2, ((DepartmentDto) res.getEntity()).getLinks().size());
+        Assertions.assertNotNull(((JobsDto) res.getEntity()).getLinks());
+        Assertions.assertEquals(2, ((JobsDto) res.getEntity()).getLinks().size());
     }
 
 }
